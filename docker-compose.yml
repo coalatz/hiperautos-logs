@@ -19,8 +19,40 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  service1:
+    build: ./service1
+    container_name: service1-injestor
+    depends_on: 
+      - rabbitmq
+    ports:
+      - "8081:8080"
+    networks:
+      - hypernet
+
+  service2:
+    build: ./service2
+    container_name: service2-analyzer
+    depends_on:
+      - rabbitmq
+    ports:
+      - "8082:8080"
+    networks:
+      - hypernet
+
+  service3:
+    build: ./service3
+    container_name: service3-storage
+    depends_on:
+      - postgres
+    ports:
+      - "8083:8080"
+    networks:
+      - hypernet
+
 networks:
   hypernet:
     driver: bridge
+
 volumes:
   postgres_data:
