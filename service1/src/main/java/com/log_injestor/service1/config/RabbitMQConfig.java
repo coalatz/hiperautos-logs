@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String LOG_EXCHANGE_NAME = "log-injestor"; 
+    public static final String LOG_EXCHANGE_INJESTOR = "log-injestor"; 
 
     @Bean
     DirectExchange exchange() {
-        return new DirectExchange(LOG_EXCHANGE_NAME, true, false); 
+        return new DirectExchange(LOG_EXCHANGE_INJESTOR, true, false); 
     }
 }

@@ -1,9 +1,10 @@
 package com.log_injestor.service1.service;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-
 import com.log_injestor.service1.config.RabbitMQConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogProducerService {
 
 	private RabbitTemplate rabbitTemplate;
@@ -14,9 +15,9 @@ public class LogProducerService {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 	
-	public void sendLogmessage(String message) {
+	public void sendLogMessage(String message) {
 		rabbitTemplate.convertAndSend(
-				RabbitMQConfig.LOG_EXCHANGE_NAME,
+				RabbitMQConfig.LOG_EXCHANGE_INJESTOR,
 				INJESTOR_ROUTING_KEY,
 				message
 				);

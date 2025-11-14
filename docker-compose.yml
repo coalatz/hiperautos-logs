@@ -32,7 +32,7 @@ services:
 
   service2:
     build: ./service2
-    container_name: service2-analyzer
+#    container_name: service2-analyzer
     depends_on:
       - rabbitmq
     ports:
