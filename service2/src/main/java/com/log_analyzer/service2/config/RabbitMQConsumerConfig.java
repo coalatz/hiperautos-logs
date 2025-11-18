@@ -22,14 +22,14 @@ public class RabbitMQConsumerConfig {
     }
 
     @Bean
-   public DirectExchange exchange() {
+   public DirectExchange exchangeAnalyzer() {
         return new DirectExchange(LOG_EXCHANGE_INJESTOR, true, false);
    }
 
     @Bean
-   public Binding analyzerBinding(Queue analyzerQueue, DirectExchange exchange) {
+   public Binding analyzerBinding(Queue analyzerQueue, DirectExchange exchangeAnalyzer) {
         return BindingBuilder.bind(analyzerQueue)
-                .to(exchange)
+                .to(exchangeAnalyzer)
                 .with(LOG_ROUTING_KEY);
    }
 

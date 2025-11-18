@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="">
+      <change afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/config/RabbitMQProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hiperauto-logs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hiperauto-logs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/config/RabbitMQConfigService1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="35XhJpHa62UfPfLzsHPCSEVsgoK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/eduar/Documents/workspace-spring-tool-suite-4-4.23.1.RELEASE/hiperauto-logs",
+    "project.structure.last.edited": "Módulos",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Tarefa padrão">
+      <changelist id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="" />
+      <created>1763262265480</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763262265480</updated>
+    </task>
+    <servers />
+  </component>
+</project>

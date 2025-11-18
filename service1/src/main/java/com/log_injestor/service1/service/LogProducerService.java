@@ -1,6 +1,6 @@
 package com.log_injestor.service1.service;
 
-import com.log_injestor.service1.config.RabbitMQConfig;
+import com.log_injestor.service1.config.RabbitMQConfigService1;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +16,11 @@ public class LogProducerService {
 	}
 	
 	public void sendLogMessage(String message) {
-		rabbitTemplate.convertAndSend(
-				RabbitMQConfig.LOG_EXCHANGE_INJESTOR,
-				INJESTOR_ROUTING_KEY,
-				message
-				);
+        rabbitTemplate.convertAndSend(
+                RabbitMQConfigService1.LOG_EXCHANGE_INJESTOR,
+                INJESTOR_ROUTING_KEY,
+                message
+        );
 		System.out.println(" [x] Sent '" + message + "' with routing key '" + INJESTOR_ROUTING_KEY + "'");
 	}
 }	

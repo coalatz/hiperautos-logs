@@ -6,21 +6,14 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/service1/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/service1/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/service1/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/service1/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/service1/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/service2/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/service2/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/service2/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/service2/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/service3/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/service3/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/service3/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/service3/src/test" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-amqp:3.2.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:6.2.12" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:3.5.7" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:3.5.7" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-rabbit:3.2.8" level="project" />
   </component>
 </module>

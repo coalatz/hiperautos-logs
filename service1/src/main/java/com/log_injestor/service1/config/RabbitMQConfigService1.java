@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMQConfig {
+public class RabbitMQConfigService1 {
 
     public static final String LOG_EXCHANGE_INJESTOR = "log-injestor"; 
 

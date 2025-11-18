@@ -19,6 +19,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d logsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   service1:
     build: ./service1
@@ -44,7 +49,10 @@ services:
     build: ./service3
     container_name: service3-storage
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
     ports:
       - "8083:8080"
     networks:
