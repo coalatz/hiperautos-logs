@@ -1,4 +1,5 @@
 package com.log_analyzer.service2.config;
+import com.log_analyzer.service2.service.LogAnalyzerAIService;
 import org.springframework.amqp.core.Queue;
 
 import org.springframework.amqp.core.BindingBuilder;
