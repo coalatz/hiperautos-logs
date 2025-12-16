@@ -13,17 +13,4 @@ public class Service1Application {
         SpringApplication.run(Service1Application.class, args);
     }
 
-    @Bean
-    public CommandLineRunner runner(LogProducerService logProducerService) {
-        return args -> {
-            // 🚨 AQUI VOCÊ CHAMA O MÉTODO DE ENVIO DIRETAMENTE
-            System.out.println(">>> Tentando enviar mensagem de teste via CommandLineRunner...");
-
-            logProducerService.sendLogMessage("INFO: Usuário 123 logou com sucesso.");
-
-            logProducerService.sendLogMessage("ERROR: Falha de conexão com o banco de dados.");
-        };
-
-    }
-
 }

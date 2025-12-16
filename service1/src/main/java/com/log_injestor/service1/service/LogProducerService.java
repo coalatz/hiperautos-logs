@@ -21,6 +21,6 @@ public class LogProducerService {
                 INJESTOR_ROUTING_KEY,
                 message
         );
-		System.out.println(" [x] Sent '" + message + "' with routing key '" + INJESTOR_ROUTING_KEY + "'");
+        System.out.println("log recebido e enviado para o analyzer");
 	}
 }	
