@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="">
-      <change afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/config/RabbitMQProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hiperauto-logs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hiperauto-logs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/config/RabbitMQConfigService1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/repository/StorageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service1/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service3/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,18 +32,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/eduar/Documents/workspace-spring-tool-suite-4-4.23.1.RELEASE/hiperauto-logs",
-    "project.structure.last.edited": "Módulos",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;chore/refactor-answer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eduar/Documents/workspace-spring-tool-suite-4-4.23.1.RELEASE/hiperauto-logs&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Módulos&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Tarefa padrão">
       <changelist id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="" />
