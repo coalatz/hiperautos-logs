@@ -1,6 +1,7 @@
 package com.log_analyzer.service2.service;
 
 import com.log_analyzer.service2.config.RabbitMQProducerConfig;
+import com.log_analyzer.service2.model.LogAnalysisResponse;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class LogProducerServiceAnalyzer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendLogMenssage(String message) {
+    public void sendLogMenssage(LogAnalysisResponse message) {
         rabbitTemplate.convertAndSend(
                RabbitMQProducerConfig.LOG_EXCHANGE_ANALYZER,
                 ROUTING_KEY_ANALYZER,

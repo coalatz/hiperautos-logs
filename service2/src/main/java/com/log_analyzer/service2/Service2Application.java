@@ -15,17 +15,5 @@ public class Service2Application {
 		SpringApplication.run(Service2Application.class, args);
 	}
 
-    @Bean
-    public CommandLineRunner runner(LogProducerServiceAnalyzer logProducerService) {
-        return args -> {
-            // 🚨 AQUI VOCÊ CHAMA O MÉTODO DE ENVIO DIRETAMENTE
-            System.out.println(">>> Tentando enviar mensagem de teste via CommandLineRunner...");
-
-            logProducerService.sendLogMenssage("INFO: Usuário 123 logou com sucesso.");
-            logProducerService.sendLogMenssage("ERROR");
-           
-        };
-
-    }
 
 }
