@@ -2,11 +2,13 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     ports:
-      - "5672:5672"   
-      - "15672:15672"  
-    networks:
-      - hypernet
+      - "5672:5672"
+      - "15672:15672"
 
   postgres:
     image: postgres:15
@@ -24,30 +26,33 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+      start_period: 10s
 
   service1:
     build: ./service1
     container_name: service1-injestor
-    depends_on: 
+    depends_on:
       - rabbitmq
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xmx256m
     ports:
       - "8081:8080"
-    networks:
-      - hypernet
 
   service2:
     build: ./service2
-#    container_name: service2-analyzer
+    container_name: service2-analyzer
     depends_on:
       - rabbitmq
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xmx256m
     ports:
       - "8082:8080"
-    networks:
-      - hypernet
 
   service3:
     build: ./service3
     container_name: service3-storage
+    links:
+      - postgres
     depends_on:
       postgres:
         condition: service_healthy
@@ -55,12 +60,6 @@ services:
         condition: service_started
     ports:
       - "8083:8080"
-    networks:
-      - hypernet
-
-networks:
-  hypernet:
-    driver: bridge
 
 volumes:
   postgres_data:
