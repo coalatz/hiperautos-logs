@@ -5,20 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="">
-      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/repository/StorageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/model/RequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service3/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service3/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/config/RabbitMQConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service3/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hiperauto-logs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hiperauto-logs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/controller/InjestorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/controller/InjestorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service1/src/main/java/com/log_injestor/service1/service/LogProducerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/LogAnalysisResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/LogAnalysisResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/service/LogAnalyzerAIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/service/LogAnalyzerAIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,18 +39,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;chore/refactor-answer&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/eduar/Documents/workspace-spring-tool-suite-4-4.23.1.RELEASE/hiperauto-logs&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Módulos&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aplicação.Service1Application.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "chore/analysis-response",
+    "last_opened_file_path": "C:/Users/eduar/Documents/codigo/hiperauto-logs",
+    "project.structure.last.edited": "Módulos",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Service1Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.log_injestor.service1.Service1Application" />
+      <module name="service1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.log_injestor.service1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Aplicação.Service1Application" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Tarefa padrão">
       <changelist id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="" />

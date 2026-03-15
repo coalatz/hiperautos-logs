@@ -39,6 +39,8 @@ public class LogAnalyzerAIService {
             "\n" +
             "summary\n" +
             "\n" +
+            "suggestedAction\n" +
+            "\n" +
             "Caso não seja possível identificar alguma informação com clareza, utilize valores neutros como \"unknown\" ou \"undetermined\".\n" +
             "\n" +
             "Definição dos campos:\n" +
@@ -48,6 +50,8 @@ public class LogAnalyzerAIService {
             "category: classifica o tipo do log (ex: \"authentication\", \"database\", \"network\", \"performance\", \"application\", \"infrastructure\").\n" +
             "\n" +
             "summary: resumo técnico curto e objetivo, em linguagem formal, descrevendo o que ocorreu.\n" +
+            "\n" +
+            "suggestedAction: sugestao de uma acao do que fazer com base no log enviado\n" +
             "\n" +
             "Log para análise:";
 

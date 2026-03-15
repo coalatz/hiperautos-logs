@@ -1,6 +1,7 @@
 package com.log_injestor.service1.service;
 
 import com.log_injestor.service1.config.RabbitMQConfigService1;
+import com.log_injestor.service1.model.RequestDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class LogProducerService {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 	
-	public void sendLogMessage(String message) {
+	public void sendLogMessage(RequestDTO message) {
         rabbitTemplate.convertAndSend(
                 RabbitMQConfigService1.LOG_EXCHANGE_INJESTOR,
                 INJESTOR_ROUTING_KEY,
