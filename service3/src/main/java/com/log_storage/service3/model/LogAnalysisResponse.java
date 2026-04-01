@@ -17,15 +17,17 @@ public class LogAnalysisResponse implements Serializable {
     private String category;
     private String summary;
     private String originalLog;
+    private String suggestedAction;
 
     public LogAnalysisResponse(){
 
     }
-    public LogAnalysisResponse(String status, String category, String summary, String originalLog) {
+    public LogAnalysisResponse(String status, String category, String summary, String originalLog, String suggestedAction) {
         this.status = status;
         this.category = category;
         this.summary = summary;
         this.originalLog = originalLog;
+        this.suggestedAction = suggestedAction;
     }
 
     public String getStatus() {
