@@ -1,9 +1,6 @@
-package com.log_injestor.service1.model;
+package com.log_analyzer.service2.model.dto;
 
-
-import java.io.Serializable;
-
-public class RequestDTO implements Serializable {
+public class RequestDTO {
 
     private String message;
     private String file;

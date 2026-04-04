@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.log_analyzer.service2.model.LogAnalysisResponse;
 import com.log_analyzer.service2.model.dto.ChatCompletionMessage;
 import com.log_analyzer.service2.model.dto.ChatCompletionRequest;
+import com.log_analyzer.service2.model.dto.RequestDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -59,9 +60,9 @@ public class LogAnalyzerAIService {
         this.webClient = webClient;
     }
 
-    public LogAnalysisResponse sendLogAI(String log) {
+    public LogAnalysisResponse sendLogAI(RequestDTO log) {
         ChatCompletionMessage requestSystem = new ChatCompletionMessage("system", prompt);
-        ChatCompletionMessage requestUser = new ChatCompletionMessage("user", log);
+        ChatCompletionMessage requestUser = new ChatCompletionMessage("user", log.getMessage());
         List<ChatCompletionMessage> messages = List.of(requestSystem, requestUser);
         LogAnalysisResponse finalResponse = null;
 
@@ -79,7 +80,7 @@ public class LogAnalyzerAIService {
             JsonNode rootNode = mapper.readTree(responseBody);
             String jsonLimpio = rootNode.path("choices").get(0).path("message").path("content").asText();
             finalResponse = mapper.readValue(jsonLimpio, LogAnalysisResponse.class);
-            finalResponse.setOriginalLog(log);
+            finalResponse.setOriginalLog(log.getMessage());
         } catch (WebClientResponseException e) {
         System.out.println("Erro detalhado da API: " + e.getResponseBodyAsString());
     } catch (Exception e) {

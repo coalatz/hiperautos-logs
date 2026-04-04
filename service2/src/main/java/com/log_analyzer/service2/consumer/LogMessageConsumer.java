@@ -1,6 +1,7 @@
 package com.log_analyzer.service2.consumer;
 
 import com.log_analyzer.service2.model.LogAnalysisResponse;
+import com.log_analyzer.service2.model.dto.RequestDTO;
 import com.log_analyzer.service2.service.LogAnalyzerAIService;
 import com.log_analyzer.service2.service.LogProducerServiceAnalyzer;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -20,8 +21,8 @@ public class LogMessageConsumer {
     }
 
 	@RabbitListener(queues = RabbitMQConsumerConfig.LOG_QUEUE_ANALYZER)
-    public void receiveMessage(String logMessage) {
-        LogAnalysisResponse response = iaService.sendLogAI(logMessage);
+    public void receiveMessage(RequestDTO log) {
+        LogAnalysisResponse response = iaService.sendLogAI(log);
 
         if (response != null) {
             System.out.println("--------------------------------------------");
@@ -35,7 +36,7 @@ public class LogMessageConsumer {
             producer.sendLogMenssage(response);
         }
         else  {
-            System.out.println("     🚨 ALERTA: ERRO GRAVE DETECTADO!");
+            System.out.println("🚨 Erro ao processar log");
         }
     }
 
