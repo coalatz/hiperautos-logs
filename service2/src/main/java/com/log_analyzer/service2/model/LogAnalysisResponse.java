@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class LogAnalysisResponse implements Serializable {
 
+    private String stream;
+    private String containerName;
+    private String image;
     private String status;
     private String category;
     private String summary;
@@ -51,5 +54,37 @@ public class LogAnalysisResponse implements Serializable {
 
     public void setOriginalLog(String originalLog) {
         this.originalLog = originalLog;
+    }
+
+    public String getSuggestedAction() {
+        return suggestedAction;
+    }
+
+    public void setSuggestedAction(String suggestedAction) {
+        this.suggestedAction = suggestedAction;
+    }
+
+    public String getStream() {
+        return stream;
+    }
+
+    public void setStream(String stream) {
+        this.stream = stream;
+    }
+
+    public String getContainerName() {
+        return containerName;
+    }
+
+    public void setContainerName(String containerName) {
+        this.containerName = containerName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

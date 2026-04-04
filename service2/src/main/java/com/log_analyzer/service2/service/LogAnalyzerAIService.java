@@ -22,9 +22,11 @@ public class LogAnalyzerAIService {
     private String apiUrl;
     @Value("${api.gemini.key}")
     private String apiKey;
-    private final String prompt = "Você é um serviço de Inteligência Artificial especializado em análise automática de logs de sistemas distribuídos baseados em microsserviços.\n" +
+    private final String prompt = "Você é um serviço de Inteligência Artificial especializado em análise automática de logs de sistemas distribuídos baseados em microsserviços rodando em ambientes conteinerizados.\n" +
             "\n" +
-            "Sua tarefa é analisar o log fornecido e identificar o estado da ocorrência, o tipo de evento e um resumo técnico objetivo.\n" +
+            "Sua tarefa é analisar o log fornecido e identificar o estado da ocorrência, o tipo de evento, um resumo técnico objetivo, e uma sugestao para resolver o problema do log que foi enviado.\n" +
+            "\n" +
+            "Utilize todo o contexto enviado junto com a mensagem para que consiga analisar e sugerir a melhor solucao possivel\n" +
             "\n" +
             "Regras obrigatórias:\n" +
             "\n" +
@@ -54,7 +56,7 @@ public class LogAnalyzerAIService {
             "\n" +
             "suggestedAction: sugestao de uma acao do que fazer com base no log enviado\n" +
             "\n" +
-            "Log para análise:";
+            "infos para análise:";
 
     public LogAnalyzerAIService(WebClient webClient) {
         this.webClient = webClient;
@@ -62,7 +64,13 @@ public class LogAnalyzerAIService {
 
     public LogAnalysisResponse sendLogAI(RequestDTO log) {
         ChatCompletionMessage requestSystem = new ChatCompletionMessage("system", prompt);
-        ChatCompletionMessage requestUser = new ChatCompletionMessage("user", log.getMessage());
+        ChatCompletionMessage requestUser = new ChatCompletionMessage("user",
+                "Local de saída dos dados: " + log.getStream() + "\n" +
+                        "Nome do container: " + log.getContainer_name() + "\n" +
+                        "Imagem do container: " + log.getImage() + "\n" +
+                        "Timestamp: " + log.getTimestamp() + "\n" +
+                        "Log: " + log.getMessage()
+        );
         List<ChatCompletionMessage> messages = List.of(requestSystem, requestUser);
         LogAnalysisResponse finalResponse = null;
 
@@ -78,9 +86,16 @@ public class LogAnalyzerAIService {
                     .block();
             ObjectMapper mapper = new ObjectMapper();
             JsonNode rootNode = mapper.readTree(responseBody);
-            String jsonLimpio = rootNode.path("choices").get(0).path("message").path("content").asText();
-            finalResponse = mapper.readValue(jsonLimpio, LogAnalysisResponse.class);
+            String textPure = rootNode.path("choices").get(0).path("message").path("content").asText();
+            String json = textPure.replace("```json", "")
+                    .replace("```JSON", "")
+                    .replace("```", "")
+                    .trim();
+            finalResponse = mapper.readValue(json, LogAnalysisResponse.class);
             finalResponse.setOriginalLog(log.getMessage());
+            finalResponse.setContainerName(log.getContainer_name());
+            finalResponse.setStream(log.getStream());
+            finalResponse.setImage(log.getImage());
         } catch (WebClientResponseException e) {
         System.out.println("Erro detalhado da API: " + e.getResponseBodyAsString());
     } catch (Exception e) {
