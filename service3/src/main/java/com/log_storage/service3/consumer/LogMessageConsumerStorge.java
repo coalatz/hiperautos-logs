@@ -27,6 +27,7 @@ public class LogMessageConsumerStorge {
             System.out.println("-----------------------------------");
         }catch (Exception e) {
             System.err.println("❌ ERRO AO PERSISTIR LOG NO DB: " + e.getMessage());
+            throw new RuntimeException("Falha ao salvar no banco. Reenfileirando mensagem...", e);
         }
     }
 }

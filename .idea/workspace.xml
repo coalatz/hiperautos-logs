@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dd10651e-c1a0-41a8-a406-21c07a2b0140" name="Alterações" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/LogAnalysisResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/LogAnalysisResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/dto/RequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/model/dto/RequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/service/LogAnalyzerAIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service2/src/main/java/com/log_analyzer/service2/service/LogAnalyzerAIService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/consumer/LogMessageConsumerStorge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/service3/src/main/java/com/log_storage/service3/model/LogAnalysisResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

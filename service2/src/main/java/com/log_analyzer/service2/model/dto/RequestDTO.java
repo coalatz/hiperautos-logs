@@ -1,6 +1,8 @@
 package com.log_analyzer.service2.model.dto;
 
-public class RequestDTO {
+import java.io.Serializable;
+
+public class RequestDTO implements Serializable {
 
     private String message;
     private String timestamp;
