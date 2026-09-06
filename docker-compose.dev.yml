@@ -18,7 +18,7 @@ services:
       start_period: 10s
 
   log-service:
-    image: hiperautos/hiperautos-log-service:latest
+    build: ./log-service
     container_name: log-service
     depends_on:
       postgres:
@@ -31,7 +31,7 @@ services:
       - "8080:8080"
 
   vector:
-    image: hiperautos/hiperautos-vector:latest
+    build: ./vector
     container_name: vector
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -39,7 +39,7 @@ services:
       - log-service
 
   grafana:
-    image: hiperautos/hiperautos-grafana:latest
+    build: ./grafana
     container_name: grafana
     depends_on:
       - postgres

@@ -1,0 +1,37 @@
+sources:
+  docker_logs:
+    type: docker_logs
+    include_labels:
+      - "hiperautos.monitor=true"
+
+transforms:
+  normalize_logs:
+    type: remap
+    inputs:
+      - docker_logs
+    source: |
+      .container_name = replace(to_string!(.container_name), r'^/', "")
+      
+      # Proteção absoluta contra loops infinitos:
+      # Nunca processa logs do próprio Vector ou da nossa API, mesmo se o usuário colocar a label neles sem querer
+      if .container_name == "vector" || .container_name == "log-service" || .container_name == "postgres" || .container_name == "grafana" {
+          abort
+      }
+
+      new_event = {}
+      new_event.message = .message
+      new_event.container_name = .container_name
+      new_event.image = .image
+      new_event.stream = .stream
+      new_event.timestamp = format_timestamp!(.timestamp, format: "%Y-%m-%dT%H:%M:%S%.fZ")
+      . = new_event
+
+sinks:
+  http_out:
+    type: http
+    inputs:
+      - normalize_logs
+    uri: "http://log-service:8080/injestor"
+    encoding:
+      codec: json
+    method: post

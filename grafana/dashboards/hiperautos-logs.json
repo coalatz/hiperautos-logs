@@ -1,0 +1,207 @@
+{
+  "title": "Hiperautos Log Monitor",
+  "uid": "hiperautos-main",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "refresh": "5s",
+  "templating": {
+    "list": [
+      {
+        "name": "container",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "hiperautos_pg"
+        },
+        "query": "SELECT DISTINCT container_name FROM log_analysis;",
+        "refresh": 1,
+        "includeAll": true,
+        "allValue": "All"
+      },
+      {
+        "name": "status",
+        "type": "query",
+        "datasource": {
+          "type": "postgres",
+          "uid": "hiperautos_pg"
+        },
+        "query": "SELECT DISTINCT status FROM log_analysis;",
+        "refresh": 1,
+        "includeAll": true,
+        "allValue": "All"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "text",
+      "title": "",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "content": "# 🔍 Hiperautos Log Monitor\n**Monitoramento inteligente e resolução guiada por IA.**",
+        "mode": "markdown"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Total de Logs",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "hiperautos_pg"
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT COUNT(*) FROM log_analysis WHERE ('${container:raw}' = 'All' OR container_name = '${container:raw}') AND ('${status:raw}' = 'All' OR status = '${status:raw}');",
+          "format": "table"
+        }
+      ],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Erros Críticos",
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 3
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "hiperautos_pg"
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT COUNT(*) FROM log_analysis WHERE status = 'critical' AND ('${container:raw}' = 'All' OR container_name = '${container:raw}');",
+          "format": "table"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "links": [
+            {
+              "title": "Ver Erros Críticos",
+              "url": "/d/${__dashboard.uid}?var-status=critical"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "piechart",
+      "title": "Distribuição por Status",
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 8,
+        "y": 3
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "hiperautos_pg"
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT status, COUNT(*) as count FROM log_analysis WHERE ('${container:raw}' = 'All' OR container_name = '${container:raw}') GROUP BY status;",
+          "format": "table"
+        }
+      ],
+      "options": {
+        "pieType": "donut",
+        "reduceOptions": {
+          "values": true,
+          "calcs": []
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Logs ao Longo do Tempo",
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 14,
+        "y": 3
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "hiperautos_pg"
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT $__timeGroupAlias(created_at, 1m), status as metric, COUNT(*) as value FROM log_analysis WHERE ('${container:raw}' = 'All' OR container_name = '${container:raw}') AND ('${status:raw}' = 'All' OR status = '${status:raw}') AND $__timeFilter(created_at) GROUP BY 1, 2 ORDER BY 1;",
+          "format": "time_series"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "type": "marcusolsson-dynamictext-panel",
+      "title": "🚨 Ações Imediatas (Erros Recentes)",
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "datasource": {
+        "type": "postgres",
+        "uid": "hiperautos_pg"
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT created_at as time, to_char(created_at, 'DD/MM/YYYY HH24:MI:SS') as time_formatted, container_name as container, status, category as categoria, summary as problema_resumido, suggested_action as acao_sugerida FROM log_analysis WHERE ('${container:raw}' = 'All' OR container_name = '${container:raw}') AND ('${status:raw}' = 'All' OR status = '${status:raw}') AND status != 'info' ORDER BY created_at DESC LIMIT 50;",
+          "format": "table"
+        }
+      ],
+      "options": {
+        "content": "<style>\n  .custom-table { width: 100%; border-collapse: collapse; font-family: inherit; }\n  .custom-table th, .custom-table td { padding: 12px 8px; border-bottom: 1px solid #333; text-align: left; }\n  .custom-table th { background-color: #1a1a1a; color: #888; font-weight: 500; font-size: 12px;}\n  .custom-table tbody tr:hover { background-color: #2a2a2a; cursor: pointer; }\n  .status-badge { background-color: #E24D42; color: white; padding: 2px 6px; border-radius: 4px; font-size: 12px; }\n</style>\n\n<table class=\"custom-table\">\n  <thead>\n    <tr>\n      <th>Time</th>\n      <th>Container</th>\n      <th>Status</th>\n      <th>Categoria</th>\n      <th>Problema Resumido</th>\n    </tr>\n  </thead>\n  <tbody>\n    {{#each data}}\n    <tr class=\"log-row\" \n        data-container=\"{{container}}\" \n        data-category=\"{{categoria}}\" \n        data-problem=\"{{problema_resumido}}\" \n        data-action=\"{{acao_sugerida}}\"\n        onclick=\"var modal=document.getElementById('hiperautosGlobalModal');if(!modal){modal=document.createElement('div');modal.id='hiperautosGlobalModal';modal.innerHTML='<div style=\\'background-color:#181b1f; margin:8% auto; padding:30px; border:1px solid #333; width:70%; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.7); color:#d8d9da;\\'><span style=\\'color:#888; float:right; font-size:28px; font-weight:bold; cursor:pointer; line-height:1;\\' onclick=\\'document.getElementById(&quot;hiperautosGlobalModal&quot;).style.display=&quot;none&quot;\\'>&times;</span><h2 style=\\'margin-top:0; color:#fff;\\'>🚨 Investigação de Erro Crítico</h2><div style=\\'font-size:12px; font-weight:bold; color:#3274D9; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;\\'>Container afetado</div><div id=\\'modalDynContainer\\' style=\\'margin-top:5px; font-size:16px;\\'></div><div style=\\'font-size:12px; font-weight:bold; color:#3274D9; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;\\'>Categoria do Sistema</div><div id=\\'modalDynCategory\\' style=\\'margin-top:5px; font-size:16px;\\'></div><div style=\\'font-size:12px; font-weight:bold; color:#3274D9; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;\\'>Descrição do Problema</div><div id=\\'modalDynProblem\\' style=\\'margin-top:5px; font-size:16px; color:#E24D42; font-weight:bold;\\'></div><div style=\\'font-size:12px; font-weight:bold; color:#3274D9; margin-top:20px; text-transform:uppercase; letter-spacing:0.5px;\\'>Ação Imediata Sugerida (IA)</div><div id=\\'modalDynAction\\' style=\\'background:#22252b; padding:20px; border-left:4px solid #E24D42; margin-top:10px; white-space:pre-wrap; font-family:monospace; font-size:14px; line-height:1.5;\\'></div></div>';modal.style.cssText='display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.7);';modal.onclick=function(e){if(e.target===modal)modal.style.display='none';};document.body.appendChild(modal);}document.getElementById('modalDynContainer').innerText=this.getAttribute('data-container');document.getElementById('modalDynCategory').innerText=this.getAttribute('data-category');document.getElementById('modalDynProblem').innerText=this.getAttribute('data-problem');document.getElementById('modalDynAction').innerText=this.getAttribute('data-action');modal.style.display='block';\">\n      <td style=\"color: #888; font-size: 13px;\">{{time_formatted}}</td>\n      <td style=\"color: #3274D9; font-weight: 500;\">{{container}}</td>\n      <td><span class=\"status-badge\">{{status}}</span></td>\n      <td>{{categoria}}</td>\n      <td>{{problema_resumido}}</td>\n    </tr>\n    {{/each}}\n  </tbody>\n</table>\n\n<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" style=\"display:none;\" onload=\"if(!window.hiperautosLoaderInit){window.hiperautosLoaderInit=true;document.addEventListener('click',function(e){var a=e.target.closest('a');if(a&&a.href&&(a.href.includes('var-status')||a.href.includes('var-container'))){var l=document.getElementById('hiperLoader');if(!l){l=document.createElement('div');l.id='hiperLoader';l.innerHTML='<div style=\\'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:20000;display:flex;justify-content:center;align-items:center;flex-direction:column;\\'><div style=\\'border:6px solid #222;border-top:6px solid #3274D9;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;\\'></div><div style=\\'color:#fff;margin-top:20px;font-family:sans-serif;font-size:16px;font-weight:500;letter-spacing:1px;\\'>Aplicando filtros do dashboard...</div></div><style>@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}</style>';document.body.appendChild(l);}l.style.display='flex';setTimeout(function(){if(document.getElementById('hiperLoader'))document.getElementById('hiperLoader').style.display='none';},15000);}});}\">\n",
+        "defaultContent": "Nenhum erro crítico encontrado.",
+        "formatVariables": false,
+        "editors": [],
+        "everyRow": false
+      }
+    }
+  ]
+}
